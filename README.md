@@ -55,6 +55,63 @@ Now, the Stack becomes empty, which means we have visited all the nodes, and our
 </ol></B>
 
 <hr>
+<h3>PROGRAM:</h3>
+
+```c
+
+# DFS using Stack (Iterative) - Input Format Based
+
+def dfs(graph, start):
+    visited = set()
+    stack = [start]
+    result = []
+
+    while stack:
+        node = stack.pop()
+        if node not in visited:
+            visited.add(node)
+            result.append(node)
+
+            # Add neighbors in reverse order to maintain correct DFS order
+            for neighbor in reversed(graph[node]):
+                if neighbor not in visited:
+                    stack.append(neighbor)
+
+    return result
+
+
+# -------------------------
+# MAIN PROGRAM
+# -------------------------
+
+# Read number of nodes and edges
+n, e = map(int, input().split())
+
+graph = {}
+
+# Build graph dictionary
+for _ in range(e):
+    u, v = input().split()
+
+    if u not in graph:
+        graph[u] = []
+    if v not in graph:
+        graph[v] = []
+
+    graph[u].append(v)
+    # If undirected graph, also add reverse
+    # graph[v].append(u)
+
+# Choose starting node (first node in graph)
+start_node = list(graph.keys())[0]
+
+# Perform DFS
+output = dfs(graph, start_node)
+print(output)
+
+```
+<hr>
+<hr>
 <h3>Sample Input</h3>
 <hr>
 8 9 <BR>
@@ -88,6 +145,12 @@ F H <BR>
 <hr>
 ['0', '1', '2', '3', '4']
 
+<hr>
+<h3>OUTPUT:</h3>
+
+<img width="1384" height="521" alt="image" src="https://github.com/user-attachments/assets/1edd8e47-9da3-4642-8504-e3ce484fa0d3" />
+
+<hr>
 <hr>
 <h3>Result:</h3>
 <hr>
