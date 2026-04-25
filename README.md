@@ -55,7 +55,7 @@ Visit node 3
 Now, the Stack becomes empty, which means we have visited all the nodes, and our DFS traversal ends.
 
 # Program:
-```
+```C
 # DFS using Stack (Iterative) - Input Format Based
 
 def dfs(graph, start):
